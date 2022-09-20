@@ -14,7 +14,7 @@ class NewbornEvent(
 
     override fun isPreConditionFulfilled(round: IRound): Boolean {
         val asset = round.findAssetByResourceType(resource::class)
-        return asset != null && asset.amount > 0
+        return asset != null && asset.amount > 1
     }
 
     /**

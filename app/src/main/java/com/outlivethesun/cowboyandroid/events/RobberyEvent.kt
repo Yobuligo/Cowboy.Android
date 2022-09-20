@@ -18,7 +18,7 @@ class RobberyEvent : IEvent {
         if (robbedBalance == 0L) {
             robbedBalance++
         }
-        return "FUCK! Call the police! You got robbed. The thieves took $robbedBalance $UNIT_CURRENCY."
+        return "FUCK! Call the police! You got robbed. The robbers took $robbedBalance $UNIT_CURRENCY."
     }
 
     private fun determineRobbedPercentOfAll(): Int {

@@ -12,19 +12,22 @@ class EggsEvent : IEvent {
 
     override fun isPreConditionFulfilled(round: IRound): Boolean {
         val asset = round.findAssetByResourceType(Chicken::class)
-        return asset != null && asset.amount > 0
+        return asset != null && asset.amount > 1
     }
 
     override fun occurs(round: IRound): String {
         val assetChicken = round.findAssetByResourceType(Chicken::class)
             ?: throw RuntimeException("Asset ${Chicken::class} must be available.")
         val assetChickenEggs = round.findAssetByResourceType(ChickenEgg::class)
-            ?: throw RuntimeException("Asset ${Chicken::class} must be available.")
+            ?: throw RuntimeException("Asset ${ChickenEgg::class} must be available.")
 
 
         // 0 - 40% of chicken get eggs
         val percent = Randomizer.nextInt(1, 40)
-        val gainedChickenEggs = (assetChicken.amount / 100 * percent)
+        var gainedChickenEggs = (assetChicken.amount / 100 * percent)
+        if (gainedChickenEggs == 0L){
+            gainedChickenEggs = 1
+        }
         assetChickenEggs.amount += gainedChickenEggs
         return "You did something right. You gained $gainedChickenEggs eggs from your chickens."
     }

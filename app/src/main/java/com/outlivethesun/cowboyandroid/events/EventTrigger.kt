@@ -9,6 +9,7 @@ import com.outlivethesun.cowboyandroid.round.IRound
 object EventTrigger : IEventTrigger {
     private val events: List<IEvent> = listOf(
         EggsEvent(),
+        MilkEvent(),
         NewbornEvent(Horse, 1, 5, 10f),
         NewbornEvent(Cow, 1, 5, 10f),
         NewbornEvent(Goose, 1, 30, 30f),
