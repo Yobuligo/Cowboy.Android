@@ -13,7 +13,8 @@ object EventTrigger : IEventTrigger {
         NewbornEvent(Cow, 1, 5, 10f),
         NewbornEvent(Goose, 1, 30, 30f),
         NewbornEvent(Pig, 1, 20, 10f),
-        NewbornEvent(Sheep, 1, 30, 15f)
+        NewbornEvent(Sheep, 1, 30, 15f),
+        LotteryEvent()
     )
 
     override fun trigger(round: IRound, fragmentManager: FragmentManager) {
