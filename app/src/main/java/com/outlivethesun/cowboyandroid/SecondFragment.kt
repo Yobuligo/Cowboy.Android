@@ -18,9 +18,9 @@ import com.outlivethesun.cowboyandroid.round.Round
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class SecondFragment : Fragment() {
-    private var _binding: FragmentSecondBinding? = null
-//    private val assets = AssetsFactory().create()
-    private val assets = AssetsFactoryDebug().create()
+//    private var _binding: FragmentSecondBinding? = null
+    private val assets = AssetsFactory().create()
+//    private val assets = AssetsFactoryDebug().create()
     private val round = Round("Peter", assets)
 
     // This property is only valid between onCreateView and
