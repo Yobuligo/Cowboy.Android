@@ -1,5 +1,6 @@
 package com.outlivethesun.cowboyandroid.events
 
+import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
 import com.outlivethesun.cowboyandroid.randomizer.Randomizer
 import com.outlivethesun.cowboyandroid.resources.Cow
 import com.outlivethesun.cowboyandroid.resources.Milk
@@ -21,13 +22,13 @@ class MilkEvent : IEvent {
             ?: throw RuntimeException("Asset ${Milk::class} must be available.")
 
 
-        // 0 - 80% of cows get milk
+        // 1 - 80% of cows get milk
         val percent = Randomizer.nextInt(1, 80)
-        var gainedMilk = (assetCow.amount / 100 * percent)
+        var gainedMilk = (assetCow.amount.toDouble() / 100 * percent).toLong()
         if (gainedMilk == 0L) {
             gainedMilk = 1
         }
         assetMilk.amount += gainedMilk
-        return "Your ${assetCow.resource.name} are healthy. You gained $gainedMilk milk."
+        return "Your ${assetCow.resource.name} are healthy. You gained ${NumberFormatter.toAmount(gainedMilk)} milk."
     }
 }

@@ -1,8 +1,8 @@
 package com.outlivethesun.cowboyandroid.events
 
+import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
 import com.outlivethesun.cowboyandroid.randomizer.Randomizer
 import com.outlivethesun.cowboyandroid.round.IRound
-import com.outlivethesun.cowboyandroid.unit.UNIT_CURRENCY
 
 class RobberyEvent : IEvent {
     override val probability: Float get() = 5f
@@ -16,9 +16,13 @@ class RobberyEvent : IEvent {
         val robbedPercentOfAll = determineRobbedPercentOfAll()
         var robbedBalance = (round.assets.balance / 100 * robbedPercentOfAll).toLong()
         if (robbedBalance == 0L) {
-            robbedBalance++
+            robbedBalance = 1
         }
-        return "FUCK! Call the police! You got robbed. The robbers took $robbedBalance $UNIT_CURRENCY."
+        return "FUCK! Call the police! You got robbed. The robbers took ${
+            NumberFormatter.toMoney(
+                robbedBalance
+            )
+        }."
     }
 
     private fun determineRobbedPercentOfAll(): Int {

@@ -10,9 +10,9 @@ import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.slider.Slider
 import com.outlivethesun.cowboyandroid.R
+import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
 import com.outlivethesun.cowboyandroid.resources.IResource
 import com.outlivethesun.cowboyandroid.stockMarket.StockMarket
-import com.outlivethesun.cowboyandroid.unit.UNIT_CURRENCY
 
 class AmountInputDialog(
     private val title: String,
@@ -90,11 +90,10 @@ class AmountInputDialog(
         return AlertDialog.Builder(activity).setView(view).setTitle(title).setPositiveButton(
             positiveButtonCaption
         ) { _, _ ->
-            val value = textViewAmountValue.text.toString().toLong()
             // only inform event handler in case a value greater 0 was entered
-            if (value != 0L) {
+            if (amount != 0L) {
                 eventHandlersOnOkay.forEach { eventHandler ->
-                    eventHandler.invoke(value)
+                    eventHandler.invoke(amount)
                 }
             }
         }.setNegativeButton(R.string.cancel) { _, _ ->
@@ -109,7 +108,7 @@ class AmountInputDialog(
             textViewRemainingLand.visibility = View.GONE
         } else {
             textViewRemainingLand.text =
-                "Remaining land for ${valueConverter.convertLandToAmount()} ${resource.name}."
+                "Remaining land for ${NumberFormatter.toAmount(valueConverter.convertLandToAmount())} ${resource.name}."
         }
     }
 
@@ -118,18 +117,18 @@ class AmountInputDialog(
     }
 
     private fun refreshPrice() {
-        textViewPriceValue.text = "${StockMarket.getResourcePrice(resource)} ${UNIT_CURRENCY}"
+        textViewPriceValue.text = NumberFormatter.toMoney(StockMarket.getResourcePrice(resource))
     }
 
     private fun refreshAmount() {
-        textViewAmountValue.text = amount.toString()
+        textViewAmountValue.text = NumberFormatter.toAmount(amount)
     }
 
     private fun refreshProfit() {
         if (!isNegativeProfit || profit == 0.0) {
-            textViewProfitValue.text = "$profit ${UNIT_CURRENCY}"
+            textViewProfitValue.text = NumberFormatter.toMoney(profit)
         } else {
-            textViewProfitValue.text = "-$profit ${UNIT_CURRENCY}"
+            textViewProfitValue.text = "-${NumberFormatter.toMoney(profit)}"
         }
     }
 

@@ -1,5 +1,6 @@
 package com.outlivethesun.cowboyandroid.events
 
+import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
 import com.outlivethesun.cowboyandroid.randomizer.Randomizer
 import com.outlivethesun.cowboyandroid.resources.Chicken
 import com.outlivethesun.cowboyandroid.resources.ChickenEgg
@@ -22,13 +23,13 @@ class EggsEvent : IEvent {
             ?: throw RuntimeException("Asset ${ChickenEgg::class} must be available.")
 
 
-        // 0 - 40% of chicken get eggs
+        // 1 - 40% of chicken get eggs
         val percent = Randomizer.nextInt(1, 40)
-        var gainedChickenEggs = (assetChicken.amount / 100 * percent)
-        if (gainedChickenEggs == 0L){
+        var gainedChickenEggs = (assetChicken.amount.toDouble() / 100 * percent).toLong()
+        if (gainedChickenEggs == 0L) {
             gainedChickenEggs = 1
         }
         assetChickenEggs.amount += gainedChickenEggs
-        return "You did something right. You gained $gainedChickenEggs eggs from your chickens."
+        return "You did something right. You gained ${NumberFormatter.toAmount(gainedChickenEggs)} eggs from your chickens."
     }
 }

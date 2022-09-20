@@ -7,18 +7,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.outlivethesun.cowboyandroid.assets.AssetsFactoryDebug
 import com.outlivethesun.cowboyandroid.assets.AssetsFactory
 import com.outlivethesun.cowboyandroid.databinding.FragmentSecondBinding
+import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
 import com.outlivethesun.cowboyandroid.round.Move
 import com.outlivethesun.cowboyandroid.round.Round
-import com.outlivethesun.cowboyandroid.stockMarket.StockMarket
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class SecondFragment : Fragment() {
     private var _binding: FragmentSecondBinding? = null
-    private val assets = AssetsFactory().create()
+//    private val assets = AssetsFactory().create()
+    private val assets = AssetsFactoryDebug().create()
     private val round = Round("Peter", assets)
 
     // This property is only valid between onCreateView and
@@ -64,7 +66,7 @@ class SecondFragment : Fragment() {
     }
 
     private fun refreshBalance() {
-        binding.textviewBalance.text = "${round.assets.balance} €"
+        binding.textviewBalance.text = NumberFormatter.toMoney(round.assets.balance)
     }
 
     override fun onDestroyView() {

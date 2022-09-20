@@ -1,5 +1,6 @@
 package com.outlivethesun.cowboyandroid.events
 
+import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
 import com.outlivethesun.cowboyandroid.randomizer.Randomizer
 import com.outlivethesun.cowboyandroid.resources.Sheep
 import com.outlivethesun.cowboyandroid.resources.Wool
@@ -23,11 +24,11 @@ class WoolEvent : IEvent {
 
         // 0 - 90% of sheep get wool
         val percent = Randomizer.nextInt(1, 90)
-        var gainedWool = (assetSheep.amount / 100 * percent)
+        var gainedWool = (assetSheep.amount.toDouble() / 100 * percent).toLong()
         if (gainedWool == 0L) {
             gainedWool = 1
         }
         assetWool.amount += gainedWool
-        return "Your ${assetSheep.resource.name} brought you $gainedWool wool."
+        return "Your ${assetSheep.resource.name} brought you ${NumberFormatter.toAmount(gainedWool)} wool."
     }
 }

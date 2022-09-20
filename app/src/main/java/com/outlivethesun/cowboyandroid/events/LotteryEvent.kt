@@ -1,8 +1,8 @@
 package com.outlivethesun.cowboyandroid.events
 
+import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
 import com.outlivethesun.cowboyandroid.randomizer.Randomizer
 import com.outlivethesun.cowboyandroid.round.IRound
-import com.outlivethesun.cowboyandroid.unit.UNIT_CURRENCY
 
 class LotteryEvent : IEvent {
     override val probability: Float get() = 10f
@@ -17,7 +17,7 @@ class LotteryEvent : IEvent {
     override fun occurs(round: IRound): String {
         var lotteryAmount = determineLotteryAmount()
         round.assets.balance += lotteryAmount
-        return "WOW! You won the lottery and gained $lotteryAmount $UNIT_CURRENCY."
+        return "WOW! You won the lottery and gained ${NumberFormatter.toMoney(lotteryAmount)}."
     }
 
     private fun determineLotteryAmount(): Int {

@@ -15,6 +15,7 @@ import com.outlivethesun.cowboyandroid.dialogs.amountInputDialog.AmountConverter
 import com.outlivethesun.cowboyandroid.dialogs.amountInputDialog.AmountInputDialog
 import com.outlivethesun.cowboyandroid.dialogs.resourceInfoDialog.ResourceInfoDialog
 import com.outlivethesun.cowboyandroid.events.EventTrigger
+import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
 import com.outlivethesun.cowboyandroid.resources.IProgressable
 import com.outlivethesun.cowboyandroid.round.IRound
 import com.outlivethesun.cowboyandroid.round.Move
@@ -47,9 +48,9 @@ class RecyclerViewAdapter(
     override fun onBindViewHolder(holder: RecyclerViewAdapter.ViewHolder, position: Int) {
         val asset = round.assets.resources[position]
         holder.icon.setImageResource(asset.resource.icon)
-        holder.amount.text = asset.amount.toString()
+        holder.amount.text = NumberFormatter.toAmount(asset.amount)
         holder.name.text = asset.resource.name
-        holder.price.text = "${StockMarket.getResourcePrice(asset.resource)} ${UNIT_CURRENCY}"
+        holder.price.text = NumberFormatter.toMoney(StockMarket.getResourcePrice(asset.resource))
 
         val resource = asset.resource
         if (resource is IProgressable) {
