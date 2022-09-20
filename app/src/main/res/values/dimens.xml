@@ -1,0 +1,10 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="overview_image_size">50dp</dimen>
+    <dimen name="pick_amount_image_size">100dp</dimen>
+    <dimen name="resource_info_image_size">100dp</dimen>
+    <dimen name="text_size">20sp</dimen>
+    <dimen name="text_margin">5dp</dimen>"
+    <dimen name="text_margin_ident">15dp</dimen>"
+    <dimen name="button_margin">50dp</dimen>"
+</resources>

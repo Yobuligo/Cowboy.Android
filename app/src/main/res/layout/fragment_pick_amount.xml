@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textview_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin_ident"
+        android:layout_marginTop="@dimen/text_margin"
+        android:text="@string/price"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_price_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin"
+        android:layout_marginTop="@dimen/text_margin"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_profit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin_ident"
+        android:text="@string/balance"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_price" />
+
+    <TextView
+        android:id="@+id/textview_profit_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintEnd_toEndOf="@id/textview_price_value"
+        app:layout_constraintTop_toBottomOf="@id/textview_price" />
+
+    <TextView
+        android:id="@+id/textView_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin_ident"
+        android:text="@string/amount"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_profit" />
+
+    <TextView
+        android:id="@+id/textview_amount_value"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textAlignment="textEnd"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintEnd_toEndOf="@id/textview_price_value"
+        app:layout_constraintTop_toBottomOf="@id/textview_profit" />
+
+    <ImageView
+        android:id="@+id/imageview_icon"
+        android:layout_width="@dimen/pick_amount_image_size"
+        android:layout_height="@dimen/pick_amount_image_size"
+        app:layout_constraintBaseline_toTopOf="@id/pick_value_slider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textview_price_value"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/icon" />
+
+    <TextView
+        android:id="@+id/textview_remaining_land"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin_ident"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_amount" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/pick_value_slider"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/text_margin"
+        android:layout_marginEnd="@dimen/text_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_remaining_land" />
+
+    <Button
+        android:id="@+id/pick_value_button_minus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/minus"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/pick_value_button_plus"
+        app:layout_constraintTop_toBottomOf="@id/pick_value_slider" />
+
+    <Button
+        android:id="@+id/pick_value_button_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/plus"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pick_value_slider" />
+
+    <Button
+        android:id="@+id/pick_value_button_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/all"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/pick_value_button_plus"
+        app:layout_constraintTop_toBottomOf="@id/pick_value_slider" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
