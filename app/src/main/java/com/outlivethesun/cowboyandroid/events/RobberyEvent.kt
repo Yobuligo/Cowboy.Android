@@ -14,11 +14,11 @@ class RobberyEvent : IEvent {
 
     override fun occurs(round: IRound): String {
         val robbedPercentOfAll = determineRobbedPercentOfAll()
-        var robbedBalance = (robbedPercentOfAll / round.assets.balance * 100).toLong()
+        var robbedBalance = (round.assets.balance / 100 * robbedPercentOfAll).toLong()
         if (robbedBalance == 0L) {
             robbedBalance++
         }
-        return "FUCK! Call the police! You get robbed. The thieves took $robbedBalance $UNIT_CURRENCY."
+        return "FUCK! Call the police! You got robbed. The thieves took $robbedBalance $UNIT_CURRENCY."
     }
 
     private fun determineRobbedPercentOfAll(): Int {
