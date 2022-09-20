@@ -13,8 +13,8 @@ import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.outlivethesun.cowboyandroid.dialogs.amountInputDialog.AmountConverterBuy
 import com.outlivethesun.cowboyandroid.dialogs.amountInputDialog.AmountConverterSell
 import com.outlivethesun.cowboyandroid.dialogs.amountInputDialog.AmountInputDialog
-import com.outlivethesun.cowboyandroid.events.EventSpawner
 import com.outlivethesun.cowboyandroid.dialogs.resourceInfoDialog.ResourceInfoDialog
+import com.outlivethesun.cowboyandroid.events.EventTrigger
 import com.outlivethesun.cowboyandroid.resources.IProgressable
 import com.outlivethesun.cowboyandroid.round.IRound
 import com.outlivethesun.cowboyandroid.round.Move
@@ -49,8 +49,7 @@ class RecyclerViewAdapter(
         holder.icon.setImageResource(asset.resource.icon)
         holder.amount.text = asset.amount.toString()
         holder.name.text = asset.resource.name
-        holder.price.text =
-            "${StockMarket.getResourcePrice(asset.resource)} ${UNIT_CURRENCY}"
+        holder.price.text = "${StockMarket.getResourcePrice(asset.resource)} ${UNIT_CURRENCY}"
 
         val resource = asset.resource
         if (resource is IProgressable) {
@@ -115,7 +114,7 @@ class RecyclerViewAdapter(
 
     private fun moveNext() {
         Move.next()
-        EventSpawner.spawn(round.assets)
+        EventTrigger.trigger(round, fragmentManager)
         notifyDataSetChanged()
     }
 

@@ -33,11 +33,10 @@ class ResourceInfoDialog<T : IResource>(private val asset: IAsset<T>) : DialogFr
         refreshProperties()
 
         editTextDescription.isEnabled = false
-        val dialog = AlertDialog.Builder(activity).setView(view).setTitle(asset.resource.name)
+        return AlertDialog.Builder(activity).setView(view).setTitle(asset.resource.name)
             .setNegativeButton(getString(R.string.close)) { _, _ ->
 
             }.create()
-        return dialog
     }
 
     private fun refreshProperties() {

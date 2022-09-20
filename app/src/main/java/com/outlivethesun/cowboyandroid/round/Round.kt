@@ -6,12 +6,15 @@ import com.outlivethesun.cowboyandroid.resources.IResource
 import kotlin.reflect.KClass
 
 class Round(override val name: String, override val assets: IAssets) : IRound {
-    override fun <T : IResource> findAssetByResourceType(resourceType: KClass<T>): IAsset<T>? {
+    private val assetsHash: HashMap<KClass<out IResource>, IAsset<*>> = hashMapOf()
+
+    init {
         assets.resources.forEach { asset ->
-            if (asset.resource::class == resourceType) {
-                return asset as IAsset<T>
-            }
+            assetsHash[asset.resource::class] = asset
         }
-        return null
+    }
+
+    override fun <T : IResource> findAssetByResourceType(resourceType: KClass<T>): IAsset<T>? {
+        return assetsHash[resourceType] as IAsset<T>
     }
 }

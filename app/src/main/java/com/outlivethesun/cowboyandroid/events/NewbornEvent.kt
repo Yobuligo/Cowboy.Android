@@ -1,13 +1,38 @@
 package com.outlivethesun.cowboyandroid.events
 
-import com.outlivethesun.cowboyandroid.assets.IAssets
+import com.outlivethesun.cowboyandroid.randomizer.Randomizer
+import com.outlivethesun.cowboyandroid.resources.IResource
+import com.outlivethesun.cowboyandroid.round.IRound
 
-class NewbornEvent(override val probability: Float) : IEvent {
+class NewbornEvent(
+    private val resource: IResource,
+    private val minPercentOfAllGetNewborns: Int,
+    private val maxPercentOfAllGetNewborns: Int,
+    override val probability: Float
+) : IEvent {
+    override val title: String get() = "Newborn"
 
-    override val title: String
-        get() = TODO("Not yet implemented")
+    override fun isPreConditionFulfilled(round: IRound): Boolean {
+        val asset = round.findAssetByResourceType(resource::class)
+        return asset != null && asset.amount > 0
+    }
 
-    override fun occurs(assets: IAssets): String {
-        TODO("Not yet implemented")
+    /**
+     * [minPercentOfAllGetNewborns] - [maxPercentOfAllGetNewborns] of your [resource] gets newborns
+     */
+    override fun occurs(round: IRound): String {
+        val asset = round.findAssetByResourceType(resource::class)
+            ?: throw RuntimeException("Asset ${resource::class} must be available.")
+        val percent = Randomizer.nextInt(minPercentOfAllGetNewborns, maxPercentOfAllGetNewborns)
+        var gainedNewborns = (asset.amount / 100 * percent)
+        if (gainedNewborns == 0L) {
+            gainedNewborns++
+        }
+        asset.amount += gainedNewborns
+        return if (Randomizer.nextBoolean()) {
+            "Your ${resource.name} live a freestyle life. You gained $gainedNewborns newborns."
+        } else {
+            "You gained $gainedNewborns ${resource.name}."
+        }
     }
 }
