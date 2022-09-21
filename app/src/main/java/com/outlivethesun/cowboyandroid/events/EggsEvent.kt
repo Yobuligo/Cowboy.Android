@@ -1,7 +1,7 @@
 package com.outlivethesun.cowboyandroid.events
 
 import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
-import com.outlivethesun.cowboyandroid.randomizer.Randomizer
+import com.outlivethesun.cowboyandroid.randomizer.randomizer
 import com.outlivethesun.cowboyandroid.resources.Chicken
 import com.outlivethesun.cowboyandroid.resources.ChickenEgg
 import com.outlivethesun.cowboyandroid.round.IRound
@@ -24,7 +24,7 @@ class EggsEvent : IEvent {
 
 
         // 1 - 40% of chicken get eggs
-        val percent = Randomizer.nextInt(1, 40)
+        val percent = randomizer.nextInt(1, 40)
         var gainedChickenEggs = (assetChicken.amount.toDouble() / 100 * percent).toLong()
         if (gainedChickenEggs == 0L) {
             gainedChickenEggs = 1

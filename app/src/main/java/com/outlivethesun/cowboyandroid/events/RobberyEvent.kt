@@ -1,7 +1,7 @@
 package com.outlivethesun.cowboyandroid.events
 
 import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
-import com.outlivethesun.cowboyandroid.randomizer.Randomizer
+import com.outlivethesun.cowboyandroid.randomizer.randomizer
 import com.outlivethesun.cowboyandroid.round.IRound
 
 class RobberyEvent : IEvent {
@@ -27,26 +27,26 @@ class RobberyEvent : IEvent {
 
     private fun determineRobbedPercentOfAll(): Int {
         // 90 .. 100 % of your money
-        if (Randomizer.nextInt(1, 500) == 1) {
-            return Randomizer.nextInt(90, 100)
+        if (randomizer.nextInt(1, 500) == 1) {
+            return randomizer.nextInt(90, 100)
         }
 
         // 80 .. 90
-        if (Randomizer.nextInt(1, 100) == 1) {
-            return Randomizer.nextInt(80, 90)
+        if (randomizer.nextInt(1, 100) == 1) {
+            return randomizer.nextInt(80, 90)
         }
 
         // 50 .. 70
-        if (Randomizer.nextInt(1, 50) == 1) {
-            return Randomizer.nextInt(50, 70)
+        if (randomizer.nextInt(1, 50) == 1) {
+            return randomizer.nextInt(50, 70)
         }
 
         // 20 .. 50
-        if (Randomizer.nextInt(1, 10) == 1) {
-            return Randomizer.nextInt(20, 50)
+        if (randomizer.nextInt(1, 10) == 1) {
+            return randomizer.nextInt(20, 50)
         }
 
-        return Randomizer.nextInt(1, 20)
+        return randomizer.nextInt(1, 20)
     }
 
 }

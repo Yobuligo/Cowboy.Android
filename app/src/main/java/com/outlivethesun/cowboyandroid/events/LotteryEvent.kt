@@ -1,7 +1,7 @@
 package com.outlivethesun.cowboyandroid.events
 
 import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
-import com.outlivethesun.cowboyandroid.randomizer.Randomizer
+import com.outlivethesun.cowboyandroid.randomizer.randomizer
 import com.outlivethesun.cowboyandroid.round.IRound
 
 class LotteryEvent : IEvent {
@@ -22,25 +22,25 @@ class LotteryEvent : IEvent {
 
     private fun determineLotteryAmount(): Int {
         // 100000 .. 1000000 €
-        if (Randomizer.nextInt(1, 500) == 1) {
-            return Randomizer.nextInt(100000, 1000000)
+        if (randomizer.nextInt(1, 500) == 1) {
+            return randomizer.nextInt(100000, 1000000)
         }
 
         // 10000 .. 100000 €
-        if (Randomizer.nextInt(1, 100) == 1) {
-            return Randomizer.nextInt(10000, 100000)
+        if (randomizer.nextInt(1, 100) == 1) {
+            return randomizer.nextInt(10000, 100000)
         }
 
         // 1000 .. 10000 €
-        if (Randomizer.nextInt(1, 50) == 1) {
-            return Randomizer.nextInt(1000, 10000)
+        if (randomizer.nextInt(1, 50) == 1) {
+            return randomizer.nextInt(1000, 10000)
         }
 
         // 100 .. 1000 €
-        if (Randomizer.nextInt(1, 10) == 1) {
-            return Randomizer.nextInt(100, 1000)
+        if (randomizer.nextInt(1, 10) == 1) {
+            return randomizer.nextInt(100, 1000)
         }
 
-        return Randomizer.nextInt(1, 100)
+        return randomizer.nextInt(1, 100)
     }
 }

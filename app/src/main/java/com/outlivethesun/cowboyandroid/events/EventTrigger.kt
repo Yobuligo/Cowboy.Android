@@ -2,7 +2,7 @@ package com.outlivethesun.cowboyandroid.events
 
 import androidx.fragment.app.FragmentManager
 import com.outlivethesun.cowboyandroid.dialogs.eventInfoDialog.EventInfoDialog
-import com.outlivethesun.cowboyandroid.randomizer.Randomizer
+import com.outlivethesun.cowboyandroid.randomizer.randomizer
 import com.outlivethesun.cowboyandroid.resources.*
 import com.outlivethesun.cowboyandroid.round.IRound
 
@@ -22,7 +22,7 @@ object EventTrigger : IEventTrigger {
 
     override fun trigger(round: IRound, fragmentManager: FragmentManager) {
         events.forEach { event ->
-            val percent = Randomizer.nextInt(0, 100)
+            val percent = randomizer.nextInt(0, 100)
             if (percent > 0 && percent <= event.probability && event.isPreConditionFulfilled(round)) {
                 val message = event.occurs(round)
                 EventInfoDialog(event.title, message).show(
