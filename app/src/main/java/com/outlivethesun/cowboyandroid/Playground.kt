@@ -29,11 +29,10 @@ fun determineLotteryAmount(): Int {
 }
 
 fun main() {
-    repeat(100) {
+    repeat(10000) {
         println(
-//            probability().level(500, 100000, 1000000).level(100, 10000, 100000)
-//                .level(50, 1000, 10000).level(10, 100, 1000).calculate(1, 100)
-            probability().calculate(1, 3)
+            probability().level(500, 100000, 1000000).level(100, 10000, 100000)
+                .level(50, 1000, 10000).level(10, 100, 1000).calculate(1, 100)
         )
     }
 }

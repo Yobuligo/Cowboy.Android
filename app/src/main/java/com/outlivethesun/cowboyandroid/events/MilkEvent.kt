@@ -21,7 +21,6 @@ class MilkEvent : IEvent {
         val assetMilk = round.findAssetByResourceType(Milk::class)
             ?: throw RuntimeException("Asset ${Milk::class} must be available.")
 
-
         // 1 - 80% of cows get milk
         val percent = randomizer.nextInt(1, 80)
         var gainedMilk = (assetCow.amount.toDouble() / 100 * percent).toLong()

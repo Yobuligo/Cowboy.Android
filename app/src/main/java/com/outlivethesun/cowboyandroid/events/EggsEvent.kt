@@ -25,6 +25,7 @@ class EggsEvent : IEvent {
 
         // 1 - 40% of chicken get eggs
         val percent = randomizer.nextInt(1, 40)
+
         var gainedChickenEggs = (assetChicken.amount.toDouble() / 100 * percent).toLong()
         if (gainedChickenEggs == 0L) {
             gainedChickenEggs = 1

@@ -1,7 +1,7 @@
 package com.outlivethesun.cowboyandroid.events
 
 import com.outlivethesun.cowboyandroid.formatter.toMoney
-import com.outlivethesun.cowboyandroid.probability.randomizer.randomizer
+import com.outlivethesun.cowboyandroid.probability.probability
 import com.outlivethesun.cowboyandroid.round.IRound
 
 class LotteryEvent : IEvent {
@@ -15,32 +15,13 @@ class LotteryEvent : IEvent {
     }
 
     override fun occurs(round: IRound): String {
-        val lotteryAmount = determineLotteryAmount().toDouble()
+        val lotteryAmount = probability()
+            .level(500, 100000, 1000000)
+            .level(100, 10000, 100000)
+            .level(50, 1000, 10000)
+            .level(10, 100, 1000)
+            .calculate(1, 100).toDouble()
         round.assets.balance += lotteryAmount
         return "WOW! You won the lottery and gained ${lotteryAmount.toMoney()}."
-    }
-
-    private fun determineLotteryAmount(): Int {
-        // 100000 .. 1000000 €
-        if (randomizer.nextInt(1, 500) == 1) {
-            return randomizer.nextInt(100000, 1000000)
-        }
-
-        // 10000 .. 100000 €
-        if (randomizer.nextInt(1, 100) == 1) {
-            return randomizer.nextInt(10000, 100000)
-        }
-
-        // 1000 .. 10000 €
-        if (randomizer.nextInt(1, 50) == 1) {
-            return randomizer.nextInt(1000, 10000)
-        }
-
-        // 100 .. 1000 €
-        if (randomizer.nextInt(1, 10) == 1) {
-            return randomizer.nextInt(100, 1000)
-        }
-
-        return randomizer.nextInt(1, 100)
     }
 }
