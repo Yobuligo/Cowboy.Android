@@ -22,7 +22,6 @@ class EggsEvent : IEvent {
         val assetChickenEggs = round.findAssetByResourceType(ChickenEgg::class)
             ?: throw RuntimeException("Asset ${ChickenEgg::class} must be available.")
 
-
         // 1 - 40% of chicken get eggs
         val percent = randomizer.nextInt(1, 40)
 

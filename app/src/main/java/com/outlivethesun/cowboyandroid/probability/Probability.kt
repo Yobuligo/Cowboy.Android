@@ -9,6 +9,30 @@ fun probability(): IProbability {
     return Probability()
 }
 
+fun Double.percent(percent: Int): Double {
+    return this / 100 * percent
+}
+
+fun Double.percent(minPercent: Int, maxPercent: Int): Double {
+    return this / 100 * randomizer.nextInt(minPercent, maxPercent)
+}
+
+fun Long.percent(percent: Int): Long {
+    return (this.toDouble() / 100 * percent).toLong()
+}
+
+fun Long.percent(minPercent: Int, maxPercent: Int): Long {
+    return (this.toDouble() / 100 * randomizer.nextInt(minPercent, maxPercent)).toLong()
+}
+
+fun Int.percent(percent: Int): Int {
+    return (this.toDouble() / 100 * percent).toInt()
+}
+
+fun Int.percent(minPercent: Int, maxPercent: Int): Int {
+    return (this.toDouble() / 100 * randomizer.nextInt(minPercent, maxPercent)).toInt()
+}
+
 class Probability : IProbability {
     private val probabilityLevels: ProbabilityLevelMutableList<Long> = mutableListOf()
 

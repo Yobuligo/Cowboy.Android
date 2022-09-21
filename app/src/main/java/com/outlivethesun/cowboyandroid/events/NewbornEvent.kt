@@ -24,6 +24,7 @@ class NewbornEvent(
     override fun occurs(round: IRound): String {
         val asset = round.findAssetByResourceType(resource::class)
             ?: throw RuntimeException("Asset ${resource::class} must be available.")
+
         val percent = randomizer.nextInt(minPercentOfAllGetNewborns, maxPercentOfAllGetNewborns)
         var gainedNewborns = (asset.amount.toDouble() / 100 * percent).toLong()
         if (gainedNewborns == 0L) {
