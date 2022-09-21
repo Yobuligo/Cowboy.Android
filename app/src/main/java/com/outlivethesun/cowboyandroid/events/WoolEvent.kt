@@ -1,6 +1,6 @@
 package com.outlivethesun.cowboyandroid.events
 
-import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
+import com.outlivethesun.cowboyandroid.formatter.toAmount
 import com.outlivethesun.cowboyandroid.randomizer.randomizer
 import com.outlivethesun.cowboyandroid.resources.Sheep
 import com.outlivethesun.cowboyandroid.resources.Wool
@@ -29,6 +29,6 @@ class WoolEvent : IEvent {
             gainedWool = 1
         }
         assetWool.amount += gainedWool
-        return "Your ${assetSheep.resource.name} brought you ${NumberFormatter.toAmount(gainedWool)} wool."
+        return "Your ${assetSheep.resource.name} brought you ${gainedWool.toAmount()} wool."
     }
 }

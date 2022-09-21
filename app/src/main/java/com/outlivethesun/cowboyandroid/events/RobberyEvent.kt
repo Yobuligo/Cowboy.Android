@@ -1,6 +1,6 @@
 package com.outlivethesun.cowboyandroid.events
 
-import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
+import com.outlivethesun.cowboyandroid.formatter.toMoney
 import com.outlivethesun.cowboyandroid.randomizer.randomizer
 import com.outlivethesun.cowboyandroid.round.IRound
 
@@ -18,11 +18,7 @@ class RobberyEvent : IEvent {
         if (robbedBalance == 0L) {
             robbedBalance = 1
         }
-        return "FUCK! Call the police! You got robbed. The robbers took ${
-            NumberFormatter.toMoney(
-                robbedBalance
-            )
-        }."
+        return "FUCK! Call the police! You got robbed. The robbers took ${robbedBalance.toMoney()}."
     }
 
     private fun determineRobbedPercentOfAll(): Int {

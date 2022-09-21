@@ -1,6 +1,6 @@
 package com.outlivethesun.cowboyandroid.events
 
-import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
+import com.outlivethesun.cowboyandroid.formatter.toAmount
 import com.outlivethesun.cowboyandroid.randomizer.randomizer
 import com.outlivethesun.cowboyandroid.resources.Cow
 import com.outlivethesun.cowboyandroid.resources.Milk
@@ -29,6 +29,6 @@ class MilkEvent : IEvent {
             gainedMilk = 1
         }
         assetMilk.amount += gainedMilk
-        return "Your ${assetCow.resource.name} are healthy. You gained ${NumberFormatter.toAmount(gainedMilk)} milk."
+        return "Your ${assetCow.resource.name} are healthy. You gained ${gainedMilk.toAmount()} milk."
     }
 }

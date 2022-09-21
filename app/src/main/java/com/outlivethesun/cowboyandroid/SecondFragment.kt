@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.outlivethesun.cowboyandroid.assets.AssetsFactory
 import com.outlivethesun.cowboyandroid.databinding.FragmentSecondBinding
-import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
+import com.outlivethesun.cowboyandroid.formatter.toMoney
 import com.outlivethesun.cowboyandroid.round.IRound
 import com.outlivethesun.cowboyandroid.round.Move
 import com.outlivethesun.cowboyandroid.round.Round
@@ -70,7 +70,7 @@ class SecondFragment : Fragment() {
     }
 
     private fun refreshBalance() {
-        binding.textviewBalance.text = NumberFormatter.toMoney(round.assets.balance)
+        binding.textviewBalance.text = round.assets.balance.toMoney()
     }
 
     override fun onDestroyView() {

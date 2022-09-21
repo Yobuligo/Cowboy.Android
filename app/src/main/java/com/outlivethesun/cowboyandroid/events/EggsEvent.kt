@@ -1,6 +1,6 @@
 package com.outlivethesun.cowboyandroid.events
 
-import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
+import com.outlivethesun.cowboyandroid.formatter.toAmount
 import com.outlivethesun.cowboyandroid.randomizer.randomizer
 import com.outlivethesun.cowboyandroid.resources.Chicken
 import com.outlivethesun.cowboyandroid.resources.ChickenEgg
@@ -30,6 +30,6 @@ class EggsEvent : IEvent {
             gainedChickenEggs = 1
         }
         assetChickenEggs.amount += gainedChickenEggs
-        return "You did something right. You gained ${NumberFormatter.toAmount(gainedChickenEggs)} eggs from your chickens."
+        return "You did something right. You gained ${gainedChickenEggs.toAmount()} eggs from your chickens."
     }
 }

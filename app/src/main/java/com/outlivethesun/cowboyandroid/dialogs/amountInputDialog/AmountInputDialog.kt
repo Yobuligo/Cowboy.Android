@@ -10,7 +10,8 @@ import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.slider.Slider
 import com.outlivethesun.cowboyandroid.R
-import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
+import com.outlivethesun.cowboyandroid.formatter.toAmount
+import com.outlivethesun.cowboyandroid.formatter.toMoney
 import com.outlivethesun.cowboyandroid.resources.IResource
 import com.outlivethesun.cowboyandroid.stockMarket.StockMarket
 
@@ -107,8 +108,9 @@ class AmountInputDialog(
         if (resource.neededLand == 0.0) {
             textViewRemainingLand.visibility = View.GONE
         } else {
-            textViewRemainingLand.text =
-                "Remaining land for ${NumberFormatter.toAmount(amountConverter.convertLandToAmount())} ${resource.name}."
+            textViewRemainingLand.text = "Remaining land for ${
+                amountConverter.convertLandToAmount().toAmount()
+            } ${resource.name}."
         }
     }
 
@@ -117,18 +119,18 @@ class AmountInputDialog(
     }
 
     private fun refreshPrice() {
-        textViewPriceValue.text = NumberFormatter.toMoney(StockMarket.getResourcePrice(resource))
+        textViewPriceValue.text = StockMarket.getResourcePrice(resource).toMoney()
     }
 
     private fun refreshAmount() {
-        textViewAmountValue.text = NumberFormatter.toAmount(amount)
+        textViewAmountValue.text = amount.toAmount()
     }
 
     private fun refreshProfit() {
         if (!isNegativeProfit || profit == 0.0) {
-            textViewProfitValue.text = NumberFormatter.toMoney(profit)
+            textViewProfitValue.text = profit.toMoney()
         } else {
-            textViewProfitValue.text = "-${NumberFormatter.toMoney(profit)}"
+            textViewProfitValue.text = "-${profit.toMoney()}"
         }
     }
 

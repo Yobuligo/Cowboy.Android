@@ -1,6 +1,6 @@
 package com.outlivethesun.cowboyandroid.events
 
-import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
+import com.outlivethesun.cowboyandroid.formatter.toAmount
 import com.outlivethesun.cowboyandroid.randomizer.randomizer
 import com.outlivethesun.cowboyandroid.resources.IResource
 import com.outlivethesun.cowboyandroid.round.IRound
@@ -31,7 +31,7 @@ class NewbornEvent(
         }
         asset.amount += gainedNewborns
         return if (randomizer.nextBoolean()) {
-            "Your ${resource.name} live a freestyle life. You gained ${NumberFormatter.toAmount(gainedNewborns)} newborns."
+            "Your ${resource.name} live a freestyle life. You gained ${gainedNewborns.toAmount()} newborns."
         } else {
             "You gained $gainedNewborns ${resource.name}."
         }

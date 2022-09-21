@@ -1,6 +1,6 @@
 package com.outlivethesun.cowboyandroid.events
 
-import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
+import com.outlivethesun.cowboyandroid.formatter.toMoney
 import com.outlivethesun.cowboyandroid.randomizer.randomizer
 import com.outlivethesun.cowboyandroid.round.IRound
 
@@ -15,9 +15,9 @@ class LotteryEvent : IEvent {
     }
 
     override fun occurs(round: IRound): String {
-        var lotteryAmount = determineLotteryAmount()
+        val lotteryAmount = determineLotteryAmount().toDouble()
         round.assets.balance += lotteryAmount
-        return "WOW! You won the lottery and gained ${NumberFormatter.toMoney(lotteryAmount)}."
+        return "WOW! You won the lottery and gained ${lotteryAmount.toMoney()}."
     }
 
     private fun determineLotteryAmount(): Int {
