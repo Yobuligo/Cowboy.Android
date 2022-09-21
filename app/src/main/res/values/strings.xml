@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Cowboy.Android</string>
+    <string name="app_name">Cowboy</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -27,4 +27,5 @@
     <string name="description">Description</string>
     <string name="balance">Balance</string>
     <string name="all">All</string>
+    <string name="enter_your_name">Enter your name</string>
 </resources>

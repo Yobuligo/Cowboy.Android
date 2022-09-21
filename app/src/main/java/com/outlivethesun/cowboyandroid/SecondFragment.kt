@@ -5,14 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.outlivethesun.cowboyandroid.assets.AssetsFactoryDebug
 import com.outlivethesun.cowboyandroid.assets.AssetsFactory
 import com.outlivethesun.cowboyandroid.databinding.FragmentSecondBinding
 import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
+import com.outlivethesun.cowboyandroid.round.IRound
 import com.outlivethesun.cowboyandroid.round.Move
 import com.outlivethesun.cowboyandroid.round.Round
+import com.outlivethesun.cowboyandroid.stockMarket.ProfileViewModel
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -20,12 +22,13 @@ import com.outlivethesun.cowboyandroid.round.Round
 class SecondFragment : Fragment() {
     private var _binding: FragmentSecondBinding? = null
     private val assets = AssetsFactory().create()
-//    private val assets = AssetsFactoryDebug().create()
-    private val round = Round("Peter", assets)
+    //    private val assets = AssetsFactoryDebug().create()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val viewModel: ProfileViewModel by activityViewModels()
+    private lateinit var round: IRound
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -33,6 +36,7 @@ class SecondFragment : Fragment() {
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         binding.recyclerViewResources.layoutManager = LinearLayoutManager(requireContext())
 
+        round = Round(viewModel.name, assets)
         binding.recyclerViewResources.adapter =
             RecyclerViewAdapter(requireContext(), round, parentFragmentManager)
         binding.recyclerViewResources.addItemDecoration(
