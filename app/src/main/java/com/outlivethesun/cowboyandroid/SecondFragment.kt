@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.outlivethesun.cowboyandroid.assets.AssetsFactory
+import com.outlivethesun.cowboyandroid.assets.AssetsFactoryDebug
 import com.outlivethesun.cowboyandroid.databinding.FragmentSecondBinding
 import com.outlivethesun.cowboyandroid.formatter.toMoney
 import com.outlivethesun.cowboyandroid.round.IRound
@@ -21,8 +21,9 @@ import com.outlivethesun.cowboyandroid.stockMarket.ProfileViewModel
  */
 class SecondFragment : Fragment() {
     private var _binding: FragmentSecondBinding? = null
-    private val assets = AssetsFactory().create()
-    //    private val assets = AssetsFactoryDebug().create()
+
+    //    private val assets = AssetsFactory().create()
+    private val assets = AssetsFactoryDebug().create()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
