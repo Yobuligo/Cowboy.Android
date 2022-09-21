@@ -8,14 +8,29 @@ object NumberFormatter : INumberFormatter {
     }
 
     override fun toMoney(amount: Long): String {
-        return toMoney(amount.toDouble())
+        return "${toAmount(amount)} $UNIT_CURRENCY"
     }
 
     override fun toMoney(amount: Int): String {
-        return toMoney(amount.toDouble())
+        return "${toAmount(amount)} $UNIT_CURRENCY"
     }
 
     override fun toAmount(amount: Double): String {
+        val result = convert(amount)
+        return result.ifBlank { amount.toString() }
+    }
+
+    override fun toAmount(amount: Long): String {
+        val result = convert(amount.toDouble())
+        return result.ifBlank { amount.toString() }
+    }
+
+    override fun toAmount(amount: Int): String {
+        val result = convert(amount.toDouble())
+        return result.ifBlank { amount.toString() }
+    }
+
+    private fun convert(amount: Double): String {
         return if (amount > 1000000000000) {
             val bio = (amount / 1000000000000)
             "${String.format("%.2f", bio)} Bio"
@@ -26,11 +41,7 @@ object NumberFormatter : INumberFormatter {
             val mio = (amount / 1000000)
             "${String.format("%.2f", mio)} Mio"
         } else {
-            return amount.toString()
+            return ""
         }
-    }
-
-    override fun toAmount(amount: Long): String {
-        return toAmount(amount.toDouble())
     }
 }

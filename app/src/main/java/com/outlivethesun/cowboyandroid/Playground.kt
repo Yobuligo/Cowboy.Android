@@ -1,12 +1,13 @@
 package com.outlivethesun.cowboyandroid
 
-import com.outlivethesun.cowboyandroid.randomizer.randomizer
-import com.outlivethesun.cowboyandroid.resources.Milk
+import com.outlivethesun.cowboyandroid.assets.AssetsFactory
+import com.outlivethesun.cowboyandroid.dialogs.amountInputDialog.AmountConverterBuy
+import com.outlivethesun.cowboyandroid.formatter.NumberFormatter
+import com.outlivethesun.cowboyandroid.resources.Horse
+import com.outlivethesun.cowboyandroid.round.Round
 
 fun main() {
-    val minPrice = Milk.minPrice.toLong()
-    val maxPrice = Milk.maxPrice.toLong()
-    repeat(100) {
-        println(randomizer.nextInt(1, 3))
-    }
+    val round = Round("Peter", AssetsFactory().create())
+    val amountConverter = AmountConverterBuy(round, Horse)
+    println("Remaining land for ${NumberFormatter.toAmount(10.0)} ${Horse.name}.")
 }

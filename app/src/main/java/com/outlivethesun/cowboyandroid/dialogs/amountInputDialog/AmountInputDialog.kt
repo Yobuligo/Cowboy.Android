@@ -17,7 +17,7 @@ import com.outlivethesun.cowboyandroid.stockMarket.StockMarket
 class AmountInputDialog(
     private val title: String,
     private val positiveButtonCaption: String,
-    private val valueConverter: IAmountConverter,
+    private val amountConverter: IAmountConverter,
     private val resource: IResource,
     private val isNegativeProfit: Boolean
 ) : DialogFragment() {
@@ -57,7 +57,7 @@ class AmountInputDialog(
         refreshRemainingLand()
 
         slider.addOnChangeListener(Slider.OnChangeListener { slider, value, fromUser ->
-            amount = valueConverter.convertPercentToAmount(value)
+            amount = amountConverter.convertPercentToAmount(value)
             profit = amount * StockMarket.getResourcePrice(resource)
             refreshAmount()
             refreshProfit()
@@ -65,7 +65,7 @@ class AmountInputDialog(
 
         val buttonMinus = view.findViewById<Button>(R.id.pick_value_button_minus)
         buttonMinus.setOnClickListener {
-            if (amount > valueConverter.minValue) {
+            if (amount > amountConverter.minValue) {
                 amount--
                 updateSliderFromAmount()
             }
@@ -73,7 +73,7 @@ class AmountInputDialog(
 
         val buttonPlus = view.findViewById<Button>(R.id.pick_value_button_plus)
         buttonPlus.setOnClickListener {
-            if (amount < valueConverter.maxValue) {
+            if (amount < amountConverter.maxValue) {
                 amount++
                 updateSliderFromAmount()
             }
@@ -81,8 +81,8 @@ class AmountInputDialog(
 
         val buttonMax = view.findViewById<Button>(R.id.pick_value_button_max)
         buttonMax.setOnClickListener {
-            if (amount < valueConverter.maxValue) {
-                amount = valueConverter.maxValue
+            if (amount < amountConverter.maxValue) {
+                amount = amountConverter.maxValue
                 updateSliderFromAmount()
             }
         }
@@ -108,12 +108,12 @@ class AmountInputDialog(
             textViewRemainingLand.visibility = View.GONE
         } else {
             textViewRemainingLand.text =
-                "Remaining land for ${NumberFormatter.toAmount(valueConverter.convertLandToAmount())} ${resource.name}."
+                "Remaining land for ${NumberFormatter.toAmount(amountConverter.convertLandToAmount())} ${resource.name}."
         }
     }
 
     private fun updateSliderFromAmount() {
-        slider.value = valueConverter.convertAmountToPercent(amount) / 100
+        slider.value = amountConverter.convertAmountToPercent(amount) / 100
     }
 
     private fun refreshPrice() {

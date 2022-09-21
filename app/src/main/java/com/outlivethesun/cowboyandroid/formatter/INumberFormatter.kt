@@ -6,4 +6,5 @@ interface INumberFormatter {
     fun toMoney(amount: Int): String
     fun toAmount(amount: Long): String
     fun toAmount(amount: Double): String
+    fun toAmount(amount: Int): String
 }
