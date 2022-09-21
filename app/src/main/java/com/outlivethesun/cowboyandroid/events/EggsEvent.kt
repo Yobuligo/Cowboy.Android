@@ -1,7 +1,7 @@
 package com.outlivethesun.cowboyandroid.events
 
 import com.outlivethesun.cowboyandroid.formatter.toAmount
-import com.outlivethesun.cowboyandroid.randomizer.randomizer
+import com.outlivethesun.cowboyandroid.probability.randomizer.randomizer
 import com.outlivethesun.cowboyandroid.resources.Chicken
 import com.outlivethesun.cowboyandroid.resources.ChickenEgg
 import com.outlivethesun.cowboyandroid.round.IRound

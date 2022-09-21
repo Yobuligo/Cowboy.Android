@@ -1,6 +1,6 @@
 package com.outlivethesun.cowboyandroid.stockMarket
 
-import com.outlivethesun.cowboyandroid.randomizer.randomizer
+import com.outlivethesun.cowboyandroid.probability.randomizer.randomizer
 import com.outlivethesun.cowboyandroid.resources.IResource
 import com.outlivethesun.cowboyandroid.round.Move
 

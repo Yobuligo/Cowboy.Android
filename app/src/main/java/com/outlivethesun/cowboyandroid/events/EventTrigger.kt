@@ -2,7 +2,7 @@ package com.outlivethesun.cowboyandroid.events
 
 import androidx.fragment.app.FragmentManager
 import com.outlivethesun.cowboyandroid.dialogs.eventInfoDialog.EventInfoDialog
-import com.outlivethesun.cowboyandroid.randomizer.randomizer
+import com.outlivethesun.cowboyandroid.probability.randomizer.randomizer
 import com.outlivethesun.cowboyandroid.resources.*
 import com.outlivethesun.cowboyandroid.round.IRound
 

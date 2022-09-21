@@ -1,4 +1,4 @@
-package com.outlivethesun.cowboyandroid.randomizer
+package com.outlivethesun.cowboyandroid.probability.randomizer
 
 import kotlin.random.Random
 
@@ -13,6 +13,10 @@ class Randomizer {
 
     fun nextInt(min: Int, max: Int): Int {
         return random.nextInt(min, max + 1)
+    }
+
+    fun nextDouble(min: Double, max: Double): Double {
+        return random.nextDouble(min, max + 1)
     }
 
     fun nextBoolean(): Boolean {
