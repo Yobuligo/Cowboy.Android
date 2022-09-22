@@ -12,6 +12,7 @@ class AssetsFactoryDebug : IAssetsFactory {
             Asset(Chicken, 80),
             Asset(ChickenEgg, 0),
             Asset(Goose, 0),
+            Asset(Feather, 0),
             Asset(Pig, 0),
             Asset(Sheep, 0),
             Asset(Wool, 0)

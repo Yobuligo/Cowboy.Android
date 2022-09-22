@@ -12,6 +12,7 @@ class AssetsFactory : IAssetsFactory {
             Asset(Chicken, 100),
             Asset(ChickenEgg, 0),
             Asset(Goose, 2),
+            Asset(Feather, 0),
             Asset(Pig, 10),
             Asset(Sheep, 10),
             Asset(Wool, 0)
