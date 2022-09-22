@@ -79,7 +79,7 @@ class SecondFragment : Fragment() {
     }
 
     private fun createRound(): IRound {
-        return Round(viewModel.username, createAssets())
+        return Round(viewModel.username.ifBlank { viewModel.DEFAULT_USERNAME }, createAssets())
     }
 
     private fun createAssets(): IAssets {

@@ -34,7 +34,7 @@ class NewbornEvent(
         return if (randomizer.nextBoolean()) {
             "Your ${resource.name} live a freestyle life. You gained ${gainedNewborns.toAmount()} newborns."
         } else {
-            "You gained $gainedNewborns ${resource.name}."
+            "You gained ${gainedNewborns.toAmount()} ${resource.name}."
         }
     }
 }
