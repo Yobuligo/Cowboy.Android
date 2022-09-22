@@ -9,6 +9,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.outlivethesun.cowboyandroid.assets.AssetsFactory
+import com.outlivethesun.cowboyandroid.assets.AssetsFactoryDevMode
+import com.outlivethesun.cowboyandroid.assets.IAssets
 import com.outlivethesun.cowboyandroid.databinding.FragmentSecondBinding
 import com.outlivethesun.cowboyandroid.formatter.toMoney
 import com.outlivethesun.cowboyandroid.round.IRound
@@ -21,8 +23,6 @@ import com.outlivethesun.cowboyandroid.stockMarket.ProfileViewModel
  */
 class SecondFragment : Fragment() {
     private var _binding: FragmentSecondBinding? = null
-    private val assets = AssetsFactory().create()
-//    private val assets = AssetsFactoryDebug().create()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -36,7 +36,7 @@ class SecondFragment : Fragment() {
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         binding.recyclerViewResources.layoutManager = LinearLayoutManager(requireContext())
 
-        round = Round(viewModel.name, assets)
+        round = createRound()
         binding.recyclerViewResources.adapter =
             RecyclerViewAdapter(requireContext(), round, parentFragmentManager)
         binding.recyclerViewResources.addItemDecoration(
@@ -76,5 +76,17 @@ class SecondFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun createRound(): IRound {
+        return Round(viewModel.username, createAssets())
+    }
+
+    private fun createAssets(): IAssets {
+        return if (viewModel.username.lowercase() == "dev") {
+            AssetsFactoryDevMode().create()
+        } else {
+            AssetsFactory().create()
+        }
     }
 }

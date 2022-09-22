@@ -2,7 +2,7 @@ package com.outlivethesun.cowboyandroid.assets
 
 import com.outlivethesun.cowboyandroid.resources.*
 
-class AssetsFactoryDebug : IAssetsFactory {
+class AssetsFactoryDevMode : IAssetsFactory {
     override fun create(): IAssets {
         val resources = listOf(
             Asset(Land, 1000),

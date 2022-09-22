@@ -28,7 +28,7 @@ class FirstFragment : Fragment() {
     ): View? {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         binding.fragmentStartScreenEdittextName.addTextChangedListener { editText ->
-            viewModel.name = editText.toString()
+            viewModel.username = editText.toString()
         }
         return binding.root
 
