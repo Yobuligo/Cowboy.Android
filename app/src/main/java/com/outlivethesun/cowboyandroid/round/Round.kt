@@ -14,7 +14,7 @@ class Round(override val name: String, override val assets: IAssets) : IRound {
         }
     }
 
-    override fun <T : IResource> findAssetByResourceType(resourceType: KClass<T>): IAsset<T>? {
+    override fun <T : IResource> findAssetByResourceType(resourceType: KClass<out T>): IAsset<T>? {
         return assetsHash[resourceType] as IAsset<T>
     }
 }

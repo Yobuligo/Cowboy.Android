@@ -1,7 +1,7 @@
 package com.outlivethesun.cowboyandroid.events
 
 import com.outlivethesun.cowboyandroid.formatter.toAmount
-import com.outlivethesun.cowboyandroid.probability.randomizer.randomizer
+import com.outlivethesun.cowboyandroid.probability.percentRange
 import com.outlivethesun.cowboyandroid.resources.Sheep
 import com.outlivethesun.cowboyandroid.resources.Wool
 import com.outlivethesun.cowboyandroid.round.IRound
@@ -21,13 +21,8 @@ class WoolEvent : IEvent {
         val assetWool = round.findAssetByResourceType(Wool::class)
             ?: throw RuntimeException("Asset ${Wool::class} must be available.")
 
-
         // 0 - 90% of sheep get wool
-        val percent = randomizer.nextInt(1, 90)
-        var gainedWool = (assetSheep.amount.toDouble() / 100 * percent).toLong()
-        if (gainedWool == 0L) {
-            gainedWool = 1
-        }
+        var gainedWool = assetSheep.amount.percentRange(1, 90)
         assetWool.amount += gainedWool
         return "Your ${assetSheep.resource.name} brought you ${gainedWool.toAmount()} wool."
     }

@@ -1,6 +1,7 @@
 package com.outlivethesun.cowboyandroid.events
 
 import com.outlivethesun.cowboyandroid.formatter.toAmount
+import com.outlivethesun.cowboyandroid.probability.percentRange
 import com.outlivethesun.cowboyandroid.probability.randomizer.randomizer
 import com.outlivethesun.cowboyandroid.resources.IResource
 import com.outlivethesun.cowboyandroid.round.IRound
@@ -25,11 +26,8 @@ class NewbornEvent(
         val asset = round.findAssetByResourceType(resource::class)
             ?: throw RuntimeException("Asset ${resource::class} must be available.")
 
-        val percent = randomizer.nextInt(minPercentOfAllGetNewborns, maxPercentOfAllGetNewborns)
-        var gainedNewborns = (asset.amount.toDouble() / 100 * percent).toLong()
-        if (gainedNewborns == 0L) {
-            gainedNewborns = 1
-        }
+        var gainedNewborns =
+            asset.amount.percentRange(minPercentOfAllGetNewborns, maxPercentOfAllGetNewborns)
         asset.amount += gainedNewborns
         return if (randomizer.nextBoolean()) {
             "Your ${resource.name} live a freestyle life. You gained ${gainedNewborns.toAmount()} newborns."
