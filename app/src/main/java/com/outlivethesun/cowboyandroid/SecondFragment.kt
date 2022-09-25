@@ -34,6 +34,19 @@ class SecondFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    private fun refreshName() {
+        binding.textviewName.text = round.name
+    }
+
+    private fun refreshWeek() {
+        binding.textviewWeek.text = "Week ${Move.move}"
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.recyclerViewResources.layoutManager = LinearLayoutManager(requireContext())
 
         round = createRound()
@@ -53,20 +66,6 @@ class SecondFragment : Fragment() {
         Move.registerOnNext {
             refreshWeek()
         }
-        return binding.root
-
-    }
-
-    private fun refreshName() {
-        binding.textviewName.text = round.name
-    }
-
-    private fun refreshWeek() {
-        binding.textviewWeek.text = "Week ${Move.move}"
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
     }
 
     private fun refreshBalance() {
