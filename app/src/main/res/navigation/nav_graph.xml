@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.outlivethesun.cowboyandroid.fragments.StartScreenFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/fragment_start_screen_label"
         tools:layout="@layout/fragment_start_screen" >
 
         <action
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.outlivethesun.cowboyandroid.fragments.AssetsOverviewFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/fragment_assets_overview_label"
         tools:layout="@layout/fragment_assets_overview" >
 
         <action

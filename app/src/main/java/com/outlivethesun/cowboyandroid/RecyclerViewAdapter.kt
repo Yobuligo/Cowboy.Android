@@ -121,13 +121,13 @@ class RecyclerViewAdapter(
 
     class ViewHolder(itemView: View) :
         androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
-        val icon = itemView.findViewById<ImageView>(R.id.resource_icon)
-        val name = itemView.findViewById<TextView>(R.id.resource_name)
-        val amount = itemView.findViewById<TextView>(R.id.resource_amount)
-        val price = itemView.findViewById<TextView>(R.id.resource_price)
-        val buyButton = itemView.findViewById<Button>(R.id.resource_buy)
-        val sellButton = itemView.findViewById<Button>(R.id.resource_sell)
+        val icon = itemView.findViewById<ImageView>(R.id.resource_icon)!!
+        val name = itemView.findViewById<TextView>(R.id.resource_name)!!
+        val amount = itemView.findViewById<TextView>(R.id.resource_amount)!!
+        val price = itemView.findViewById<TextView>(R.id.resource_price)!!
+        val buyButton = itemView.findViewById<Button>(R.id.resource_buy)!!
+        val sellButton = itemView.findViewById<Button>(R.id.resource_sell)!!
         val progressIndicator =
-            itemView.findViewById<LinearProgressIndicator>(R.id.resource_progress_indicator)
+            itemView.findViewById<LinearProgressIndicator>(R.id.resource_progress_indicator)!!
     }
 }
