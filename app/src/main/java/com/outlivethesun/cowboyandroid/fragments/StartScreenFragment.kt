@@ -32,10 +32,10 @@ class StartScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.fragmentStartScreenEdittextName.addTextChangedListener { editText ->
+        binding.startScreenEdittextName.addTextChangedListener { editText ->
             viewModel.username = editText.toString()
         }
-        binding.buttonFirst.setOnClickListener {
+        binding.startScreenButtonStartGame.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
     }

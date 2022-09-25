@@ -44,12 +44,12 @@ class AmountInputDialog(
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val inflater = requireActivity().layoutInflater
         val view = inflater.inflate(R.layout.fragment_pick_amount, null)
-        textViewAmountValue = view.findViewById(R.id.textview_amount_value)
-        textViewPriceValue = view.findViewById(R.id.textview_price_value)
-        textViewProfitValue = view.findViewById(R.id.textview_profit_value)
-        imageViewIcon = view.findViewById(R.id.imageview_icon)
-        textViewRemainingLand = view.findViewById(R.id.textview_remaining_land)
-        slider = view.findViewById(R.id.pick_value_slider)
+        textViewAmountValue = view.findViewById(R.id.pick_amount_textview_amount_value)
+        textViewPriceValue = view.findViewById(R.id.pick_amount_textview_price_value)
+        textViewProfitValue = view.findViewById(R.id.pick_amount_textview_profit_value)
+        imageViewIcon = view.findViewById(R.id.pick_amount_imageview_icon)
+        textViewRemainingLand = view.findViewById(R.id.pick_amount_textview_remaining_land)
+        slider = view.findViewById(R.id.pick_amount_value_slider)
 
         refreshAmount()
         refreshPrice()
@@ -64,7 +64,7 @@ class AmountInputDialog(
             refreshProfit()
         })
 
-        val buttonMinus = view.findViewById<Button>(R.id.pick_value_button_minus)
+        val buttonMinus = view.findViewById<Button>(R.id.pick_amount_button_minus)
         buttonMinus.setOnClickListener {
             if (amount > amountConverter.minValue) {
                 amount--
@@ -72,7 +72,7 @@ class AmountInputDialog(
             }
         }
 
-        val buttonPlus = view.findViewById<Button>(R.id.pick_value_button_plus)
+        val buttonPlus = view.findViewById<Button>(R.id.pick_amount_button_plus)
         buttonPlus.setOnClickListener {
             if (amount < amountConverter.maxValue) {
                 amount++
@@ -80,7 +80,7 @@ class AmountInputDialog(
             }
         }
 
-        val buttonMax = view.findViewById<Button>(R.id.pick_value_button_max)
+        val buttonMax = view.findViewById<Button>(R.id.pick_amount_button_max)
         buttonMax.setOnClickListener {
             if (amount < amountConverter.maxValue) {
                 amount = amountConverter.maxValue

@@ -7,7 +7,7 @@
     tools:context=".fragments.AssetsOverviewFragment">
 
     <TextView
-        android:id="@+id/textview_week"
+        android:id="@+id/assets_overview_textview_week"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/text_margin"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textview_name"
+        android:id="@+id/assets_overview_textview_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textview_balance"
+        android:id="@+id/assets_overview_textview_balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/text_margin"
@@ -36,12 +36,12 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_resources"
+        android:id="@+id/assets_overview_recycler_view_resources"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_balance"
+        app:layout_constraintTop_toBottomOf="@id/assets_overview_textview_balance"
         app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

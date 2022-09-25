@@ -39,21 +39,22 @@ class AssetsOverviewFragment : Fragment() {
     }
 
     private fun refreshName() {
-        binding.textviewName.text = round.name
+        binding.assetsOverviewTextviewName.text = round.name
     }
 
     private fun refreshWeek() {
-        binding.textviewWeek.text = "Week ${Move.move}"
+        binding.assetsOverviewTextviewWeek.text = "Week ${Move.move}"
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerViewResources.layoutManager = LinearLayoutManager(requireContext())
+        binding.assetsOverviewRecyclerViewResources.layoutManager =
+            LinearLayoutManager(requireContext())
 
         round = createRound()
-        binding.recyclerViewResources.adapter =
+        binding.assetsOverviewRecyclerViewResources.adapter =
             RecyclerViewAdapter(requireContext(), round, parentFragmentManager)
-        binding.recyclerViewResources.addItemDecoration(
+        binding.assetsOverviewRecyclerViewResources.addItemDecoration(
             DividerItemDecoration(
                 activity, DividerItemDecoration.VERTICAL
             )
@@ -70,7 +71,7 @@ class AssetsOverviewFragment : Fragment() {
     }
 
     private fun refreshBalance() {
-        binding.textviewBalance.text = round.assets.balance.toMoney()
+        binding.assetsOverviewTextviewBalance.text = round.assets.balance.toMoney()
     }
 
     override fun onDestroyView() {

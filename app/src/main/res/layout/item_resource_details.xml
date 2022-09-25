@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/resource_name"
+        android:id="@+id/resource_details_textview_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/text_margin"
@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/resource_amount"
+        android:id="@+id/resource_details_textview_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/text_margin"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/resource_price"
+        android:id="@+id/resource_details_textview_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size"
@@ -32,34 +32,34 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/resource_icon"
+        android:id="@+id/resource_details_imageview_icon"
         android:layout_width="@dimen/overview_image_size"
         android:layout_height="@dimen/overview_image_size"
         android:src="@drawable/chicken"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/resource_name"
+        app:layout_constraintTop_toBottomOf="@id/resource_details_textview_name"
         app:tint="@color/icon" />
 
     <Button
-        android:id="@+id/resource_buy"
+        android:id="@+id/resource_details_button_buy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/text_margin"
         android:text="@string/buy"
-        app:layout_constraintEnd_toStartOf="@id/resource_sell"
-        app:layout_constraintTop_toBottomOf="@id/resource_name" />
+        app:layout_constraintEnd_toStartOf="@id/resource_details_button_sell"
+        app:layout_constraintTop_toBottomOf="@id/resource_details_textview_name" />
 
     <Button
-        android:id="@+id/resource_sell"
+        android:id="@+id/resource_details_button_sell"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/text_margin"
         android:text="@string/sell"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/resource_name" />
+        app:layout_constraintTop_toBottomOf="@id/resource_details_textview_name" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:id="@+id/resource_progress_indicator"
+        android:id="@+id/resource_details_progress_indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/text_margin_ident"
@@ -68,6 +68,6 @@
         android:paddingBottom="@dimen/text_margin_ident"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/resource_buy" />
+        app:layout_constraintTop_toBottomOf="@id/resource_details_button_buy" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
