@@ -30,6 +30,6 @@ class FeathersEvent: IEvent {
             gainedFeathers = 1
         }
         assetFeathers.amount += gainedFeathers
-        return "Your geese lost ${gainedFeathers.toAmount()} ${Feather.name} for sell."
+        return "Your geese dropped ${gainedFeathers.toAmount()} ${Feather.name} for sale."
     }
 }

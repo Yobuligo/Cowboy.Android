@@ -15,6 +15,7 @@ class EventInfoDialog(private val title: String, private val text: String) : Dia
         val view = inflater.inflate(R.layout.fragment_event_info, null)
         textviewText = view.findViewById(R.id.event_info_text)
         textviewText.text = text
+        textviewText.isEnabled = false
         return AlertDialog.Builder(requireContext()).setTitle(title).setView(view)
             .setNegativeButton("Close") { _, _ -> }.create()
     }
