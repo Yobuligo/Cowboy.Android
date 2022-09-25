@@ -22,8 +22,8 @@ class EggsEvent : IEvent {
         val assetChickenEggs = round.findAssetByResourceType(ChickenEgg::class)
             ?: throw RuntimeException("Asset ${ChickenEgg::class} must be available.")
 
-        // 1 - 40% of chicken get eggs
-        var gainedChickenEggs = assetChicken.amount.percentRange(1, 40)
+        // 20 - 40% of chicken get eggs
+        var gainedChickenEggs = assetChicken.amount.percentRange(20, 40)
         assetChickenEggs.amount += gainedChickenEggs
         return "You did something right. You gained ${gainedChickenEggs.toAmount()} eggs from your chickens."
     }

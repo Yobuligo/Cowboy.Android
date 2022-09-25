@@ -1,5 +1,7 @@
 package com.outlivethesun.cowboyandroid.probability
 
+import android.util.Log
+import com.outlivethesun.cowboyandroid.log.LOG_PREFIX
 import com.outlivethesun.cowboyandroid.probability.randomizer.randomizer
 import kotlin.math.ceil
 import kotlin.math.floor
@@ -29,20 +31,37 @@ fun Double.percentRange(minPercent: Int, maxPercent: Int): Double {
     // max value is (8% of 10 = 0.8 -> floor -> 0)
     // so take at least the min value instead of returning 0
     if (minValue > maxValue) {
+        Log.i(
+            "Long.percentRange",
+            "minValue '$minValue ($minPercent%)' > maxValue '$maxValue ($maxPercent%)' from '$this' return minValue"
+        )
         return minValue
     }
 
     // value must be greater than minValue
-    val value = (this / 100 * randomizer.nextInt(minPercent, maxPercent))
+    val percent = randomizer.nextInt(minPercent, maxPercent)
+    val value = (this / 100 * percent)
     if (value < minValue) {
+        Log.i(
+            "$LOG_PREFIX Long.percentRange",
+            "Computed value within range '$minValue ($minPercent%)' - '$maxValue ($maxPercent%)' from '$this' is '$value ($percent%)' return minValue as value is to low."
+        )
         return minValue
     }
 
     // value must be greater than maxValue
     if (value > maxValue) {
+        Log.i(
+            "$LOG_PREFIX Long.percentRange",
+            "Computed value within range '$minValue ($minPercent%)' - '$maxValue ($maxPercent%)' from '$this' is '$value ($percent%)' return maxValue as value is to high."
+        )
         return maxValue
     }
 
+    Log.i(
+        "$LOG_PREFIX Long.percentRange",
+        "Computed value within range '$minValue ($minPercent%)' - '$maxValue ($maxPercent%)' from '$this' is '$value ($percent%)' return the value."
+    )
     return value
 }
 
@@ -62,20 +81,37 @@ fun Long.percentRange(minPercent: Int, maxPercent: Int): Long {
     // max value is (8% of 10 = 0.8 -> floor -> 0)
     // so take at least the min value instead of returning 0
     if (minValue > maxValue) {
+        Log.i(
+            "$LOG_PREFIX Long.percentRange",
+            "minValue '$minValue ($minPercent%)' > maxValue '$maxValue ($maxPercent%)' from '$this' return minValue"
+        )
         return minValue
     }
 
     // value must be greater than minValue
-    val value = (toDouble() / 100 * randomizer.nextInt(minPercent, maxPercent)).roundToLong()
+    val percent = randomizer.nextInt(minPercent, maxPercent)
+    val value = (toDouble() / 100 * percent).roundToLong()
     if (value < minValue) {
+        Log.i(
+            "$LOG_PREFIX Long.percentRange",
+            "Computed value within range '$minValue ($minPercent%)' - '$maxValue ($maxPercent%)' from '$this' is '$value ($percent%)' return minValue as value is to low."
+        )
         return minValue
     }
 
     // value must be greater than maxValue
     if (value > maxValue) {
+        Log.i(
+            "$LOG_PREFIX Long.percentRange",
+            "Computed value within range '$minValue ($minPercent%)' - '$maxValue ($maxPercent%)' from '$this' is '$value ($percent%)' return maxValue as value is to high."
+        )
         return maxValue
     }
 
+    Log.i(
+        "$LOG_PREFIX Long.percentRange",
+        "Computed value within range '$minValue ($minPercent%)' - '$maxValue ($maxPercent%)' from '$this' is '$value ($percent%)' return the value."
+    )
     return value
 }
 
@@ -95,20 +131,37 @@ fun Int.percentRange(minPercent: Int, maxPercent: Int): Int {
     // max value is (8% of 10 = 0.8 -> floor -> 0)
     // so take at least the min value instead of returning 0
     if (minValue > maxValue) {
+        Log.i(
+            "$LOG_PREFIX Long.percentRange",
+            "minValue '$minValue ($minPercent%)' > maxValue '$maxValue ($maxPercent%)' from '$this' return minValue"
+        )
         return minValue
     }
 
     // value must be greater than minValue
-    val value = (toDouble() / 100 * randomizer.nextInt(minPercent, maxPercent)).roundToInt()
+    val percent = randomizer.nextInt(minPercent, maxPercent)
+    val value = (toDouble() / 100 * percent).roundToInt()
     if (value < minValue) {
+        Log.i(
+            "$LOG_PREFIX Long.percentRange",
+            "Computed value within range '$minValue ($minPercent%)' - '$maxValue ($maxPercent%)' from '$this' is '$value ($percent%)' return minValue as value is to low."
+        )
         return minValue
     }
 
     // value must be greater than maxValue
     if (value > maxValue) {
+        Log.i(
+            "$LOG_PREFIX Long.percentRange",
+            "Computed value within range '$minValue ($minPercent%)' - '$maxValue ($maxPercent%)' from '$this' is '$value ($percent%)' return maxValue as value is to high."
+        )
         return maxValue
     }
 
+    Log.i(
+        "$LOG_PREFIX Long.percentRange",
+        "Computed value within range '$minValue ($minPercent%)' - '$maxValue ($maxPercent%)' from '$this' is '$value ($percent%)' return the value."
+    )
     return value
 }
 

@@ -12,7 +12,7 @@ class NewbornEvent(
     private val maxPercentOfAllGetNewborns: Int,
     override val probability: Float
 ) : IEvent {
-    override val title: String get() = "Newborn"
+    override val title: String get() = "Newborn ${resource.name}"
 
     override fun isPreConditionFulfilled(round: IRound): Boolean {
         val asset = round.findAssetByResourceType(resource::class)
