@@ -1,4 +1,4 @@
-package com.outlivethesun.cowboyandroid
+package com.outlivethesun.cowboyandroid.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.outlivethesun.cowboyandroid.RecyclerViewAdapter
 import com.outlivethesun.cowboyandroid.assets.AssetsFactory
 import com.outlivethesun.cowboyandroid.assets.AssetsFactoryDevMode
 import com.outlivethesun.cowboyandroid.assets.IAssets
-import com.outlivethesun.cowboyandroid.databinding.FragmentSecondBinding
+import com.outlivethesun.cowboyandroid.databinding.FragmentAssetsOverviewBinding
 import com.outlivethesun.cowboyandroid.formatter.toMoney
 import com.outlivethesun.cowboyandroid.round.IRound
 import com.outlivethesun.cowboyandroid.round.Move
@@ -21,8 +22,8 @@ import com.outlivethesun.cowboyandroid.stockMarket.ProfileViewModel
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class SecondFragment : Fragment() {
-    private var _binding: FragmentSecondBinding? = null
+class AssetsOverviewFragment : Fragment() {
+    private var _binding: FragmentAssetsOverviewBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -33,7 +34,7 @@ class SecondFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragmentAssetsOverviewBinding.inflate(inflater, container, false)
         return binding.root
     }
 

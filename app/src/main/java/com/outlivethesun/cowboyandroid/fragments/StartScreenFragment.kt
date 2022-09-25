@@ -1,4 +1,4 @@
-package com.outlivethesun.cowboyandroid
+package com.outlivethesun.cowboyandroid.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,15 +8,15 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.outlivethesun.cowboyandroid.databinding.FragmentFirstBinding
+import com.outlivethesun.cowboyandroid.R
+import com.outlivethesun.cowboyandroid.databinding.FragmentStartScreenBinding
 import com.outlivethesun.cowboyandroid.stockMarket.ProfileViewModel
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
-
-    private var _binding: FragmentFirstBinding? = null
+class StartScreenFragment : Fragment() {
+    private var _binding: FragmentStartScreenBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -26,7 +26,7 @@ class FirstFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentStartScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
 
